@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Chat
+{% endblock %}
+
+{% block main %}
+    <div id="chat" class="chat-box">
+        <ul>
+            <!-- Submitted messages appear here -->
+        </ul>
+        <form id="submit-msg-form" onsubmit="msgSubmit(event)">
+            <input autofocus autocomplete="off" id="message" name="message" placeholder="Write a message here!"/>
+            <button id="submit-btn" type="submit">Send</button>
+        </form>
+        <script src="static/script/socketconnect.js" type="text/javascript"></script>
+    </div>
+{% endblock %}

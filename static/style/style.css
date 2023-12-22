@@ -1,0 +1,22 @@
+nav li {
+    list-style-type: square;
+}
+
+.logo {
+    width: 5vh;
+}
+
+.not-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.main {
+    margin: 1vh 5vw 0vh 5vw;
+}
+
+.chat-box ul{
+    border: 1px solid grey;
+    min-height: 40vh;
+    min-width: 60vw;
+}
