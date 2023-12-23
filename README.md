@@ -1,4 +1,4 @@
-# Chat
+# WebChat
 #### Video Demo:  <URL HERE>
 #### Description:
 
