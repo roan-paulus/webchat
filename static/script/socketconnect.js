@@ -11,22 +11,25 @@ socket.on("connect", () => {
 socket.on("message", (data) => {
     let msg = data["message"];
     const ud = "undefined";
+
+    // Message is just text
     if (typeof msg === ud) {
         msg = data;
     }
 
-    // Check socket IDs not undefined
-    if (typeof socket.id === ud || typeof data["sid"] === ud) {
-        console.error(`client socket id: ${socket.id} and server socket id: ${data["sid"]}`);
-    }
-
     // Display message
     const msgBox = document.querySelector("#chat ul");
-
     let li = msgBox.appendChild(document.createElement("li"));
-    if (socket.id === data["sid"]) {
-        msg = `You've joined the chat as ${data["username"]}`;
+
+    if (data["room_joined"] === true) {
+        if (typeof socket.id === ud || typeof data["sid"] === ud) {
+            console.error(`client socket id: ${socket.id} and server socket id: ${data["sid"]}`);
+        }
+        if (socket.id === data["sid"]) {
+            msg = `You've joined the chat as ${data["username"]}`;
+        }
     }
+
     li.textContent = msg;
 });
 

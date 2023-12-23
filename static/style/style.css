@@ -19,4 +19,5 @@ nav li {
     border: 1px solid grey;
     min-height: 40vh;
     min-width: 60vw;
+    list-style-type: none;
 }
