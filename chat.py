@@ -30,15 +30,18 @@ class Room:
         self.id: str = str(uuid4())
         self.users: list[str] = []
 
+        # One person does not need a room
         if slots < 2:
             raise ValueError("A minimum of two slots is required.")
         self.slots = slots
 
     def add_user(self, user: str) -> None:
+        """Add a user to this room if there is room left."""
         if not self.is_full():
             self.users.append(user)
 
     def is_full(self):
+        """Check if there is room left, pun intended."""
         return len(self.users) >= self.slots
 
     def __str__(self):
