@@ -8,20 +8,19 @@
         <header>
             <!-- IO Libray -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
-            <img class="logo" src="static/img/chat-app-logo-icon-vector.jpg" alt="Chatbox logo">
-            Chat
-        </header>
-        <div class="not-header">
-            <nav class="left-nav">
+            <nav class="nav-bar">
+                <a href="/"><img class="logo" src="static/img/chat-app-logo-icon-vector.jpg" alt="Chatbox logo"></a>
                 <ul>
-                    <li><a href="/">Home</a></li>
                     <li><a href="/chat">Random</a></li>
                 </ul>
             </nav>
-            <div class="main">
-                {% block main %}
-                {% endblock %}
-            </div>
+        </header>
+        <div class="main">
+            <!-- Two empty blocks around main to center it -->
+            <div class="main-block"></div>
+            {% block main %}
+            {% endblock %}
+            <div class="main-block"></div>
         </div>
     </body>
 </html>
