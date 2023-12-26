@@ -40,6 +40,14 @@ class Room:
         if not self.is_full():
             self.users.append(user)
 
+    def remove_user(self, user: str) -> None:
+        """Remove a user from a room and delete the room if empty."""
+        i = self.users.index(user)
+        self.users.pop(i)
+
+        if len(self.users) == 0:
+            del self
+
     def is_full(self):
         """Check if there is room left, pun intended."""
         return len(self.users) >= self.slots

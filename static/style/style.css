@@ -7,6 +7,8 @@
 * {
     margin: 0;
     padding: 0;
+
+    font-style: sans-serif;
 }
 
 body, html {
@@ -15,6 +17,40 @@ body, html {
 }
 
 /* Layout of all pages */
+#header-flash-message {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 0 10px 0;
+
+    color: white;
+    background-color: var(--custom-blue);
+}
+
+#header-flash-message h1, #header-flash-message p{
+    margin-left: 1em;
+
+    font-size: 1em;
+}
+
+#header-flash-message p{
+    margin-top: 0.2em;
+}
+
+#destroy-flash-button {
+    margin-right: 2em;
+
+    color: white;
+    background-color: var(--custom-blue);
+    border-style: none;
+
+    font-size: 1.5em;
+
+    cursor: pointer;
+}
+
 header {
     box-shadow: 0 0 3px 0 #000;
 }
@@ -48,6 +84,17 @@ nav li {
 nav li a {
     color: white;
     text-decoration: none;
+}
+
+nav li button {
+    /* For logout since it uses a form for post */
+    color: white;
+    font-size: 1em;
+
+    background-color: var(--custom-blue);
+    border-style: none;
+
+    cursor: pointer;
 }
 
 .logo {
