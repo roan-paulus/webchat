@@ -108,8 +108,52 @@ nav li button {
     justify-content: space-evenly;
 }
 
+/* index.html specific */
+#index-introduction h1 {
+    font-size: 3em;
+    color: var(--custom-blue);
+    margin-bottom: 0.3em;
+}
 
-/* Chat.html specific */
+#index-introduction a {
+    color: var(--custom-blue);
+}
+
+/* login.html specific */
+#login-actions-container, #login-block form, #register-block form {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-block {
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+#login-block form input, #register-block form input{
+    font-size: 1.2em;
+    margin-top: 0.6em;
+    border-radius: 5px;
+    border-style: solid;
+
+    height: 2em;
+}
+
+#login-block form button, #register-block form button{
+    font-size: 1em;
+    margin-top: 0.6em;
+    border-radius: 6px;
+    border-style: solid;
+
+    margin-top: 0.4em;
+
+    color: white;
+    background-color: var(--custom-blue);
+
+    height: 2.5em;
+}
+
+/* chat.html specific */
 .chat-box {
     display: flex;
     flex-direction: column;

@@ -5,18 +5,16 @@
 {% endblock %}
 
 {% block main %}
-    <div>
-        <h1>Login</h1>
+    <div id="login-actions-container">
         <div id="login-block">
             <form action="/login" method="post">
-                <input type="text" name="username" autocomplete="off" placeholder="Username">
+                <input autofocus type="text" name="username" autocomplete="off" placeholder="Username">
                 <input type="password" name="password" autocomplete="off" placeholder="Password">
                 <button type="submit">Login</button>
             </form>
         </div>
         <div id="register-block">
-            <p><i>No account? (Remember you can stay anonymous)</i></p>
-            <h1>Register</h1>
+            <p><i>No account?</i></p>
             <form action="/register" method="post">
                 <input type="text" name="username" autocomplete="off" placeholder="Username">
                 <input type="password" name="password" autocomplete="off" placeholder="Password">
