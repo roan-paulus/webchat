@@ -1,12 +1,5 @@
 # ChatApp
-#### Description: Anonymously chat, one to one with other people.
-
-
-What is this?
-=============
-A chat application where it's possible to jump into a chat room
-with a random person.
-
+#### Anonymously chat, one to one with other people.
 
 How to run.
 =============
