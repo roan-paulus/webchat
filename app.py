@@ -4,9 +4,9 @@ import os
 from flask import (Flask, request, render_template, session,
                    redirect, flash)
 from flask_socketio import SocketIO, send, join_room, leave_room
-import requests
 
 from chat import Chat
+from reservedname import reserved_name_generator, is_name_reserved, RESERVED_NAME_START
 from sql import SQLite, DATABASENAME
 from utils import get_flashed_message, hash_password, logged_in
 
@@ -17,30 +17,14 @@ app.secret_key = os.environ.get("FLASK_SECRET_KEY")
 socketio = SocketIO(app, logger=True, engineio_logger=True)
 
 chat = Chat()
+reserved_name = reserved_name_generator()
 
 
 @socketio.on("connect")
 def handle_connect(data):
     if "username" not in session:
-        resp = requests.get("https://randomuser.me/api/?format=json")
-        random_username = resp.json()["results"][0]["name"]
-        random_username = f"{random_username["first"]} {random_username["last"]}"
-
-        with SQLite(DATABASENAME) as db:
-            # TODO: Make sure that a random name can never be the same as an
-            #   existing username
-            #   It is still possible with this that a user will create an account with the
-            #   same username as a randomly assigned one while it is chatting.
-            #
-            #   Could cause issues if using session["username"]
-            #   somewhere else to access the database.
-            user = db.cursor.execute("SELECT username FROM user WHERE username = ?",
-                                     (random_username,))
-            if user:
-                flash("Username already exists, please try again.")
-                redirect("/")
-
-        session["username"] = random_username
+        anonymous_username = next(reserved_name)
+        session["username"] = anonymous_username
 
 
 @socketio.on('message')
@@ -125,6 +109,10 @@ def login():
 def register():
     username = request.form.get("username").lower()
     password = request.form.get("password")
+
+    if is_name_reserved(username):
+        flash(f"Names of {RESERVED_NAME_START} followed by a number are not allowed.")
+        return redirect("/login")
 
     if not (username and password and password == request.form.get("pass-confirmation")):
         flash("Registration unsuccessful, please make sure you fill in all corresponding \
